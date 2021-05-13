@@ -1,0 +1,18 @@
+{
+  "apiVersion": "v1",
+  "kind": "EphemeralContainers",
+  "metadata": {
+    "name": "rabbit"
+  },
+  "ephemeralContainers": [
+    {
+      "command": ["bash"],
+      "image": "shoganator/rpi-alpine-tools",
+      "imagePullPolicy": "Always",
+      "name": "diagtools",
+      "stdin": true,
+      "tty": true,
+      "terminationMessagePolicy": "File"
+    }
+  ]
+}

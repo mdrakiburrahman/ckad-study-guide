@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rabbit
+  labels:
+    role: myrole
+spec:
+  shareProcessNamespace: true
+  containers:
+    - name: rabbitmq
+      image: arm32v7/rabbitmq
+      ports:
+        - name: rabbit
+          containerPort: 5672
+          protocol: TCP
