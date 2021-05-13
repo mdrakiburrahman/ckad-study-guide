@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pvc
+spec:
+  volumes:
+    - name: log-storage
+      persistentVolumeClaim:
+        claimName: logs-pvc
+  containers:
+    - image: nginx
+      name: nginx
+      volumeMounts:
+        - mountPath: "/var/log/nginx"
+          name: log-storage
+  restartPolicy: Never

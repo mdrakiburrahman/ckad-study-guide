@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-consuming-pvc-shared
+spec:
+  volumes:
+    - name: app-storage
+      persistentVolumeClaim:
+        claimName: db-pvc-shared
+  containers:
+    - image: alpine
+      name: app
+      command: ["/bin/sh", "-c"]
+      args: ["while true; do sleep 60; done;"]
+      volumeMounts:
+        - mountPath: "/mnt/data"
+          name: app-storage
+  restartPolicy: Never
